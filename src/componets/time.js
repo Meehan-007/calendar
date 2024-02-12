@@ -10,13 +10,13 @@ const TimeRow = ({ hours }) => {
     return (
         <section>
             {hours.map(hour => ( 
-            <div>  
-           <div key={hour.id}> 
+            <div key={hour.id}>  
+           <div> 
             {hour.hour}
            </div>  
 
-           <div key={hour.id + '_textarea'}> 
-             <textarea>  {hour.text} </textarea>
+           <div> 
+             <textarea defaultValue={hour.text}/> 
            </div> 
            </div>
 
