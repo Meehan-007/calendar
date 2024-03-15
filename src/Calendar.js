@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TimeRow from './Componets/Time';
+import TimeRow from './Componets/Time'; 
+const dayjs = require('dayjs');
 
 const Calendar = () => {
 
     const [hours, setHours] = useState([
-        { hour: '9:00 AM', text: ''}, 
-        { hour: '10:00 AM', text: ''},  
-        { hour: '11:00 AM', text: ''},  
-        { hour: '12:00 PM', text: ''},  
-        { hour: '1:00 PM', text: ''}, 
-        { hour: '2:00 PM', text: ''},  
-        { hour: '3:00 PM', text: ''},  
-        { hour: '4:00 PM', text: ''}, 
-        { hour: '5:00 PM', text: ''} 
+        { id: 9, hour: '9:00 AM', text: ''}, 
+        { id: 10, hour: '10:00 AM', text: ''},  
+        { id: 11, hour: '11:00 AM', text: ''},  
+        { id: 12, hour: '12:00 PM', text: ''},  
+        { id: 13, hour: '1:00 PM', text: ''}, 
+        { id: 14, hour: '2:00 PM', text: ''},  
+        { id: 15, hour: '3:00 PM', text: ''},  
+        { id: 16, hour: '4:00 PM', text: ''}, 
+        { id: 17, hour: '5:00 PM', text: ''} ,
+        { id: 18, hour: '6:00 PM', text: ''}, 
+        { id: 19, hour: '7:00 PM', text: ''}, 
+        
+       
+        
+        
      ]);
+
+     const formattedDate = dayjs().format('MM-DD YYYY');
+console.log(formattedDate); 
+
 
     // need functions for local storage 
 
@@ -25,13 +36,19 @@ const Calendar = () => {
     // local storage to hold the info in an object 
 
 
-    // for loop to auto generate the fields?
+    
     return(
+        <main> 
+        <section> 
+              <h1> Daily Calendar APP </h1> 
+              <h3> {formattedDate} </h3>
+        </section>
         <section className='container'> 
           
           <TimeRow hours={hours} />
 
-        </section>
+        </section> 
+        </main>
     )
 
 
