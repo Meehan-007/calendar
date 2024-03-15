@@ -39,11 +39,11 @@ console.log(formattedDate);
     
     return(
         <main> 
-        <section> 
+        <section className='mt-5'> 
               <h1> Daily Calendar APP </h1> 
-              <h3> {formattedDate} </h3>
+              <h3 className='mt-2'> {formattedDate} </h3>
         </section>
-        <section className='container'> 
+        <section className='container mt-4'> 
           
           <TimeRow hours={hours} />
 

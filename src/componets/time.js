@@ -12,15 +12,15 @@ const TimeRow = ({ hours }) => {
         <section>
             {hours.map(hour => (  
                 
-            <div key={hour.id} className='col-12 row mx-auto'>  
-           <div className='col-4'> 
+            <div key={hour.id} className='col-12 row mx-auto d-flex align-items-center'>  
+           <div className='col-2'> 
             {hour.hour}
            </div>  
 
-           <div className='col-7 form-group ' > 
+           <div className='col-10 form-group ' > 
              <textarea className='form-control border border-3' style={{ 
-                backgroundColor: hour.id < currentHour ? 'grey' : hour.id == currentHour ? 'white' : 'lightgrey'
-              
+                backgroundColor: hour.id < currentHour ? 'grey' : hour.id == currentHour ? 'white' : 'lightgrey',
+               color: hour.id < currentHour ? 'white' : 'black'
            }} defaultValue={hour.text}/> 
            </div> 
            </div>
