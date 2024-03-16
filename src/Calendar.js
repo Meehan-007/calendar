@@ -17,35 +17,55 @@ const Calendar = () => {
         { id: 17, hour: '5:00 PM', text: ''} ,
         { id: 18, hour: '6:00 PM', text: ''}, 
         { id: 19, hour: '7:00 PM', text: ''}, 
+           
+     ]  );
+    //  || JSON.parse(localStorage.getItem('hours'))
+
+     useEffect(() => { 
         
-       
-        
-        
-     ]);
+        const storedHours = JSON.parse(localStorage.getItem('hours')); 
+        if (storedHours) { 
+            console.log('storedHours', storedHours);
+            setHours(storedHours); 
+        }} , []);
 
      const formattedDate = dayjs().format('MM-DD YYYY');
 console.log(formattedDate); 
 
 
-    // need functions for local storage 
+const handleHoursChange = (id, value) => {
+    setHours(hours.map(hour =>
+        hour.id === id ? { ...hour, text: value } : hour
+    ));
+}; 
 
-    // need use effects to automaticaly save it
-    // color code , heavy grey for past 
-    // white for present 
-    // light grey for future  
-    // local storage to hold the info in an object 
+
+useEffect(() => {   
+
+    const hasNonEmptyText = hours.some(hour => hour.text.trim() !== '');
+    if(hasNonEmptyText) {  
+        localStorage.setItem('hours', JSON.stringify(hours)); 
+    }
+   
+}, [hours]);
+
+
+   
+
+  
 
 
     
     return(
         <main> 
+            
         <section className='mt-5'> 
               <h1> Daily Calendar APP </h1> 
               <h3 className='mt-2'> {formattedDate} </h3>
         </section>
         <section className='container mt-4'> 
           
-          <TimeRow hours={hours} />
+          <TimeRow hours={hours} onChange={handleHoursChange} />
 
         </section> 
         </main>

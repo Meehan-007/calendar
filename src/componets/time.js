@@ -1,12 +1,18 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 const dayjs = require('dayjs');
 
 
-const TimeRow = ({ hours }) => {
+const TimeRow = ({ hours, onChange }) => {
 
-    const currentHour = dayjs().format('HH') 
+    const currentHour = dayjs().format('HH')  
+
+  
     
+    const handleChange = (id, value) => { 
+        console.log('handleChange', id, value);
+        onChange(id, value);
+    };
 
     return (
         <section>
@@ -19,9 +25,9 @@ const TimeRow = ({ hours }) => {
 
            <div className='col-10 form-group ' > 
              <textarea className='form-control border border-3' style={{ 
-                backgroundColor: hour.id < currentHour ? 'grey' : hour.id == currentHour ? 'white' : 'lightgrey',
-               color: hour.id < currentHour ? 'white' : 'black'
-           }} defaultValue={hour.text}/> 
+                backgroundColor: hour.id < currentHour ? 'lightgrey' : 'white',
+               
+           }} defaultValue={hour.text} onChange={(e) => handleChange(hour.id, e.target.value)} /> 
            </div> 
            </div>
 
